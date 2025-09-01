@@ -18,24 +18,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: 'content'
-
-      - name: Checkout Main Developer Repository
-        uses: actions/checkout@v4
-        with:
-          repository: 'Ankoge/PoC---Git-Submodules-Parent-.git'
-          path: 'PoC---Git-Submodules-Parent-'
-          token: ${{ secrets.GH_SECRET }}
-
-      - name: Integrate Content into Main App
-        run: |
-          # Copy the entire content repo into the submodule path of the main app
-          cp -R ./content/. ./PoC---Git-Submodules-Parent-/content/
-          echo "Content files integrated into the main application."
-
-      - name: Install Dependencies
-        run: npm install
-        working-directory: './PoC---Git-Submodules-Parent-'
-
+          
       - name: Run All Tests
         run: npm test
         working-directory: './PoC---Git-Submodules-Parent-'
